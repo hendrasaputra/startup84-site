@@ -41,7 +41,8 @@ section { position: relative; padding: 0 var(--gutter); }
   text-shadow: 0 1px 0 var(--glow), 0 0 22px var(--glow); }
 .hour { font: clamp(40px, 6vw, 72px)/1 var(--pixel); text-align: center; margin: 0 0 18px; letter-spacing: .04em;
   color: var(--ink); text-shadow: 3px 3px 0 var(--glow); }
-.small { font: 15px/1.4 var(--pixel); text-align: center; color: var(--ink-soft); margin: 18px 0 0; letter-spacing: .03em; }
+.small { display: table; font: 15px/1.4 var(--pixel); text-align: center; color: #efe4cb; background: rgba(31, 24, 19, .82);
+  padding: 5px 12px; margin: 18px auto 0; letter-spacing: .03em; }
 
 /* A ribbon, cut for a grand opening */
 .ribbon { position: relative; display: inline-block; margin: 34px auto 0; padding: 16px 54px; text-decoration: none;
@@ -172,8 +173,9 @@ body.plain { background: #1f1813; color: #efe4cb; }
   box-shadow: 0 0 0 2px #3a3640, 0 30px 50px rgba(20, 14, 10, .55); transform: rotate(4deg); }
 .iphone img { border-radius: 13% / 6%; }
 .screen-names { list-style: none; display: flex; justify-content: center; gap: 22px; padding: 0; margin: 46px 0 0; font: 15px var(--pixel); }
-.screen-names li { color: var(--ink-soft); padding-bottom: 4px; border-bottom: 3px solid transparent; }
-.screen-names li.on { color: var(--ink); border-color: currentColor; }
+.screen-names { gap: 10px; }
+.screen-names li { cursor: pointer; color: #cdbb98; background: #1f1813; border: 2px solid #1f1813; padding: 7px 12px 8px; box-shadow: 3px 3px 0 rgba(31, 24, 19, .5); }
+.screen-names li.on { color: #1f1813; background: #f0b34d; }
 @media (max-width: 640px) { .devices { padding-right: 0; } .iphone { width: 30%; bottom: -14%; } }
 
 /* 20:00 — the trailer on the company computer */
