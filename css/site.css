@@ -4,14 +4,16 @@
   --pixel: Sysfont, ui-monospace, monospace;
   --serif: "Libre Caslon Text", Georgia, serif;
   --news: "Playfair Display", Georgia, serif;
+  --sans: "Bricolage Grotesque", system-ui, sans-serif;
   --ink: #2b1d14;          /* by day: dark brown on the sky */
   --ink-soft: #4a3526;
   --glow: rgba(255, 238, 205, .55);
+  --halo: rgba(255, 240, 214, .75);
   --paper: #efe4cb; --paper-ink: #1f1813;
   --ribbon: #c8382e; --ribbon-dark: #8d2018;
   --gutter: clamp(16px, 4vw, 48px);
 }
-body.night { --ink: #f6ead2; --ink-soft: #d8c7a6; --glow: rgba(10, 10, 30, .6); }
+body.night { --ink: #f6ead2; --ink-soft: #d8c7a6; --glow: rgba(10, 10, 30, .6); --halo: rgba(14, 12, 30, .8); }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: #2b2340; font: 400 19px/1.6 var(--serif); overflow-x: hidden; transition: color .6s; }
@@ -32,13 +34,18 @@ a { color: inherit; }
 .menubar nav a:hover { color: #fff; }
 .menu-right { margin-left: auto; display: flex; gap: 20px; align-items: center; }
 .menu-right a { color: #f0b34d; }
+.music { font: 16px var(--pixel); color: #cdbb98; background: none; border: 0; padding: 0; cursor: pointer; }
+.music[aria-pressed="true"] { color: #7ccf6a; }
+@media (max-width: 480px) { .music span { display: none; } }
 #clock { min-width: 5ch; text-align: right; font-variant-numeric: tabular-nums; }
 @media (max-width: 640px) { .menubar nav { display: none; } }
 
 /* Shared */
 section { position: relative; padding: 0 var(--gutter); }
-.say { font: italic 400 clamp(26px, 3.4vw, 44px)/1.25 var(--serif); margin: 0 auto; max-width: 22em; text-align: center;
-  text-shadow: 0 1px 0 var(--glow), 0 0 22px var(--glow); }
+.say { font: 650 clamp(26px, 3.4vw, 46px)/1.18 var(--sans); font-optical-sizing: auto; letter-spacing: -.01em;
+  margin: 0 auto; max-width: 22em; text-align: center;
+  /* A thin outline in the light's colour, so a line still reads where it crosses the buildings */
+  -webkit-text-stroke: 5px var(--halo); paint-order: stroke fill; text-shadow: 0 0 24px var(--glow); }
 .hour { display: table; font: clamp(34px, 5vw, 60px)/1 var(--pixel); margin: 0 auto 22px; letter-spacing: .06em;
   color: #f0b34d; background: #1f1813; padding: 10px 18px 12px; border: 3px solid #3a2e22;
   box-shadow: 5px 5px 0 rgba(31, 24, 19, .45); text-shadow: 0 0 12px rgba(240, 179, 77, .55); }

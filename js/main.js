@@ -25,7 +25,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 startSky(document.getElementById('sky'), { citySrc: 'assets/world/skyline_newyork.png', onHour })
   .catch(e => { console.error(e); document.body.classList.add('no-sky'); });
 
-// 09:00 — the café, with labels pointing at its parts.
+// 09:00 — the café, with labels pointing at its parts. Loaded on its own, so the rest of the page
+// does not wait for it.
+cafe().catch(e => console.error(e));
+async function cafe() {
 const iso = await loadIso();
 await document.fonts.load('16px Sysfont');
 const room = await new Room(iso, 'newyork', { rate: 0.7 }).load();
@@ -76,6 +79,7 @@ let last = performance.now();
   last = now;
   room.update(Math.min(dt, 0.1)); room.draw(now); drawBlock();
 })(last);
+}
 
 // 15:00 — the iPad cycles through its screens while it is in view.
 {
@@ -95,4 +99,33 @@ let last = performance.now();
   v.addEventListener('click', () => { if (v.paused) play(); else { v.pause(); btn.hidden = false; } });
   if (reduce) btn.hidden = false;
   else new IntersectionObserver(([e]) => { if (e.isIntersecting) play(); else v.pause(); }, { threshold: 0.4 }).observe(v);
+}
+
+// Cafetune, the game's music: one recorded loop, fetched only when asked for and looped without a gap
+// by Web Audio. Off by default, as in the game; it stops while the page is hidden.
+{
+  const btn = document.getElementById('music'), label = btn.querySelector('span');
+  let ctx, buffer, source, gain, on = false;
+  async function start() {
+    ctx ??= new AudioContext();
+    if (!buffer) {
+      label.textContent = 'Loading…';
+      buffer = await ctx.decodeAudioData(await (await fetch('assets/audio/cafetune.m4a')).arrayBuffer());
+      label.textContent = on ? 'Music on' : 'Music off';
+    }
+    if (!on || source) return;                       // turned off while it loaded, or already playing
+    gain = ctx.createGain(); gain.gain.value = 0;
+    gain.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 1.5);
+    source = ctx.createBufferSource(); source.buffer = buffer; source.loop = true;
+    source.loopStart = 0; source.loopEnd = Math.min(buffer.duration, 106.66);
+    source.connect(gain).connect(ctx.destination); source.start();
+    await ctx.resume();
+  }
+  function stop() { try { source?.stop(); } catch {} source = null; }
+  function set(v) {
+    on = v; btn.setAttribute('aria-pressed', String(on)); label.textContent = on ? 'Music on' : 'Music off';
+    if (on) start().catch(e => { console.error(e); set(false); }); else stop();
+  }
+  btn.addEventListener('click', () => set(!on));
+  document.addEventListener('visibilitychange', () => { if (!ctx) return; document.hidden ? ctx.suspend() : on && ctx.resume(); });
 }
