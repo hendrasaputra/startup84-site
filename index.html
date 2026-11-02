@@ -3,77 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Startup '84 — open a coffee shop in 1984</title>
-<meta name="description" content="An idle business game for iPhone and iPad. Open one café, then grow a chain across six cities, on a fictional 1980s business computer. Free beta on TestFlight.">
+<title>Startup '84 — a coffee business game for iPhone and iPad</title>
+<meta name="description" content="It's 1984 and you've just opened a coffee shop. An idle business game for iPhone and iPad: keep the line moving, open shops in six cities, and run it all from a beige office computer. Free beta on TestFlight.">
 <meta property="og:title" content="Startup '84">
-<meta property="og:description" content="Open a coffee shop in 1984. Grow it into a chain across six cities.">
+<meta property="og:description" content="It's 1984 and you've just opened a coffee shop. See how many it turns into.">
 <meta property="og:image" content="https://startup84.hensap.id/assets/og.jpg">
 <meta property="og:url" content="https://startup84.hensap.id/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2b2340">
-<link rel="icon" href="assets/art/icon_mug.png">
+<link rel="icon" href="assets/art/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=4">
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }</script>
-<script type="module" src="js/main.js"></script>
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" crossorigin>
+<link rel="modulepreload" href="js/main.js?v=4"><link rel="modulepreload" href="js/sky.js?v=4"><link rel="modulepreload" href="js/room.js?v=4">
+<link rel="preload" as="image" href="assets/world/skyline_newyork.webp" fetchpriority="high">
+<script type="module" src="js/main.js?v=4"></script>
 </head>
 <body>
 
 <canvas id="sky" aria-hidden="true"></canvas>
 
 <header class="menubar">
-  <a href="#open" class="menu-brand"><img src="assets/art/icon_mug.png" alt=""> CORP/OS</a>
+  <a href="#open" class="menu-brand"><img src="assets/art/icon_mug_48.png" alt=""> CORP/OS</a>
   <nav>
     <a href="#morning">Shop</a><a href="#noon">Cities</a><a href="#afternoon">Screens</a><a href="#evening">News</a><a href="#trailer">Trailer</a>
   </nav>
-  <span class="menu-right"><button id="music" class="music" type="button" aria-pressed="false" title="Cafetune, the game's music">♪ <span>Music off</span></button><a href="https://testflight.apple.com/join/jcys6CCG">Join the beta</a><span id="clock" aria-label="Time of day">06:00</span></span>
+  <span class="menu-right"><button id="music" class="music" type="button" aria-pressed="false" title="Cafetune, the game's music">♪ <span>Music off</span></button><a href="https://testflight.apple.com/join/jcys6CCG">Play the beta</a><span id="clock" aria-label="Time of day">06:00</span></span>
 </header>
 
 <main>
 
 <section id="open" class="open">
   <h1><img class="logo" src="assets/world/logo.png" alt="Startup '84" width="736" height="192"></h1>
-  <p class="say">Open a coffee shop in 1984.<br>Grow it into a chain across six cities.</p>
-  <a class="ribbon" href="https://testflight.apple.com/join/jcys6CCG"><span>Join the free beta</span></a>
+  <p class="say">It's 1984, and you've just signed a lease.</p>
+  <p class="premise">One espresso machine, a counter on a campus street, and a beige office computer to run it all from. Keep the line moving and the beans stocked, and see how many shops it turns into.</p>
+  <a class="ribbon" href="https://testflight.apple.com/join/jcys6CCG"><span>Play the free beta</span></a>
   <p class="small">iPhone and iPad · on TestFlight now · App Store soon</p>
-  <p class="cue" aria-hidden="true">Scroll to start the day</p>
+  <p class="cue" aria-hidden="true">Scroll down to open up</p>
 </section>
 
 <section id="morning" class="morning">
   <p class="hour reveal">09:00</p>
-  <h2 class="say reveal">The doors open.<br>By nine the line is out on the street.</h2>
+  <h2 class="say reveal">It's nine in the morning and the line is already out the door.</h2>
   <figure id="cafe" class="cafe reveal" aria-label="A café in New York drawn in isometric pixel art. Customers queue at the counter, baristas work the machines, and the price rises from the till with each sale.">
-    <span class="tag" data-at="queue">The line<i>Too long, and people leave</i></span>
-    <span class="tag" data-at="till">The till<i>Every sale, as it happens</i></span>
-    <span class="tag" data-at="staff">Baristas<i>One more station each</i></span>
-    <span class="tag" data-at="machines">Machines<i>Cups a minute</i></span>
-    <span class="tag" data-at="tables">Seats<i>Somewhere to stay</i></span>
+    <span class="tag" data-at="queue">The line<i>Make them wait too long and they leave</i></span>
+    <span class="tag" data-at="till">The till<i>Every cup, the moment it sells</i></span>
+    <span class="tag" data-at="staff">Baristas<i>Hire another when the line backs up</i></span>
+    <span class="tag" data-at="machines">Machines<i>A faster one pours more cups</i></span>
+    <span class="tag" data-at="tables">Seats<i>Some people like to stay</i></span>
   </figure>
   <div class="dialog reveal">
-    <p class="dialog-title"><img src="assets/art/icon_manager.png" alt=""> ADVISOR</p>
-    <p>Every number in the game is something you can see in the shop. Buy what the shop is short of, set the price, keep the beans stocked, and hire a manager to run it while you are away.</p>
+    <p class="dialog-title"><img src="assets/art/icon_manager_48.png" alt=""> ADVISOR</p>
+    <p>The line's out the door and your machine can't keep up. Another barista would pay for themselves by lunchtime. And if you can't watch the place all day, hire a manager. They'll keep it running while you're away.</p>
   </div>
 </section>
 
 <section id="noon" class="noon">
   <p class="hour reveal">13:00</p>
-  <h2 class="say reveal">One shop becomes three.<br>Three earn you a city.</h2>
+  <h2 class="say reveal">Get three shops going in one city and you've earned the next one.</h2>
   <div class="postcards">
-    <figure class="card reveal" style="--r:-4deg"><img src="assets/world/postcard_home.webp" alt="Your home town" loading="lazy"><figcaption>Your home town<b>Where it starts</b></figcaption></figure>
-    <figure class="card reveal" style="--r:3deg"><img src="assets/world/postcard_jakarta.webp" alt="Jakarta" loading="lazy"><figcaption>Jakarta<b>The biggest crowds</b></figcaption></figure>
-    <figure class="card reveal" style="--r:-2deg"><img src="assets/world/postcard_bandung.webp" alt="Bandung" loading="lazy"><figcaption>Bandung<b>Known for its bakeries</b></figcaption></figure>
-    <figure class="card reveal" style="--r:5deg"><img src="assets/world/postcard_yangon.webp" alt="Yangon" loading="lazy"><figcaption>Yangon<b>Teashops and snacks</b></figcaption></figure>
-    <figure class="card reveal" style="--r:-5deg"><img src="assets/world/postcard_newyork.webp" alt="New York" loading="lazy"><figcaption>New York<b>Cheesecake, and rent to match</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-4deg"><img src="assets/world/postcard_home.webp" alt="Your home town" loading="lazy"><figcaption>Your home town<b>Where it all starts</b></figcaption></figure>
+    <figure class="card reveal" style="--r:3deg"><img src="assets/world/postcard_jakarta.webp" alt="Jakarta" loading="lazy"><figcaption>Jakarta<b>The busiest streets you'll find</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-2deg"><img src="assets/world/postcard_bandung.webp" alt="Bandung" loading="lazy"><figcaption>Bandung<b>Everyone here loves bread</b></figcaption></figure>
+    <figure class="card reveal" style="--r:5deg"><img src="assets/world/postcard_yangon.webp" alt="Yangon" loading="lazy"><figcaption>Yangon<b>Tea, snacks and cheap rent</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-5deg"><img src="assets/world/postcard_newyork.webp" alt="New York" loading="lazy"><figcaption>New York<b>Cheesecake, and the rent to match</b></figcaption></figure>
     <figure class="card reveal" style="--r:2deg"><img src="assets/world/postcard_boston.webp" alt="Boston" loading="lazy"><figcaption>Boston<b>Commuters and students</b></figcaption></figure>
-    <figure class="card reveal" style="--r:-3deg"><img src="assets/world/postcard_annarbor.webp" alt="Ann Arbor" loading="lazy"><figcaption>Ann Arbor<b>A college town</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-3deg"><img src="assets/world/postcard_annarbor.webp" alt="Ann Arbor" loading="lazy"><figcaption>Ann Arbor<b>Mostly students</b></figcaption></figure>
   </div>
 </section>
 
 <section id="afternoon" class="afternoon">
   <p class="hour reveal">15:00</p>
-  <h2 class="say reveal">On iPad, the whole chain on one screen.<br>On iPhone, in your pocket.</h2>
+  <h2 class="say reveal">Run every shop from your iPad, or check in from your phone on the way to work.</h2>
   <div class="devices reveal">
     <figure class="ipad" aria-label="The game on iPad">
       <div class="ipad-screen" id="ipad-screen">
@@ -93,7 +97,7 @@
 
 <section id="evening" class="evening">
   <p class="hour reveal">18:00</p>
-  <h2 class="say reveal">Six o'clock. The day closes.</h2>
+  <h2 class="say reveal">Six o'clock. Time to count the takings.</h2>
   <article class="paper reveal">
     <header class="masthead">
       <p class="edition"><span>Day 93</span><span>Late edition</span><span>25¢</span></p>
@@ -105,17 +109,17 @@
       <div class="lead-grid">
         <figure class="photo"><img src="assets/world/news_photo.webp" alt="A cookie kiosk in Yangon on its first morning" loading="lazy"><figcaption>A cookie kiosk in Yangon on its first morning.</figcaption></figure>
         <div>
-          <p class="dek">Few customers, high prices, and nothing much sold until the pastry chef arrived.</p>
-          <p class="story">A cake shop lives on its reputation: loved, it sells several times what a middling one does. It is one of four kinds of shop a company can license, with the café, the bakery and the cookie kiosk. Each new kind needs an expansion, earned by opening three shops in a city.</p>
+          <p class="dek">Prices were high and customers were few. Nothing much sold until the pastry chef turned up.</p>
+          <p class="story">A cake shop lives or dies on its name. Get the reputation up and it sells several times what an average one does; let it slip and the regulars drift off. It's one of four kinds of shop you can open, alongside the café, the bakery and the cookie kiosk. To license a new kind, first get three shops open in a city.</p>
         </div>
       </div>
     </div>
     <div class="columns">
-      <section><h5>Bakery throws away 40 loaves</h5><p>Bread does not keep. A bakery bakes in the morning and throws away what is left at the close, so the owner has to choose how much to bake.</p></section>
-      <section><h5>Machine down at Blok M</h5><p>The espresso machine is running at half speed. Pay for a repair today, or wait three days for the part. One decision like this lands every day.</p></section>
-      <section><h5>Kiosks take the campus</h5><p>A cookie kiosk takes a pitch beside the shops, not a shop's place. Low rent, cheap cookies, and a low ceiling.</p></section>
-      <section><h5>Rival opens on Wall Street</h5><p>Streets nobody trades on are taken by rivals. Open first, or lose the place.</p></section>
-      <section><h5>Shop closes after three days in the red</h5><p>Bills are paid in full. Cash can run out, and the bank will lend, at a price.</p></section>
+      <section><h5>Bakery bins 40 loaves</h5><p>Bread doesn't keep. The bakery bakes first thing and throws out whatever's left at closing time. Bake too little and you sell out by noon. Bake too much and it goes in the bin.</p></section>
+      <section><h5>Machine breaks down at Blok M</h5><p>The espresso machine is running at half speed. The owner can pay for a repair today or wait three days for the part. A call like this comes up every day.</p></section>
+      <section><h5>Cookie kiosk moves onto campus</h5><p>A kiosk doesn't need a shopfront, just a pitch on the pavement. The rent is low and the cookies are cheap, but it can only sell so many.</p></section>
+      <section><h5>Rival opens on Wall Street</h5><p>Leave a street empty for long and a competitor will move in. If you want the spot, open there first.</p></section>
+      <section><h5>Shop shuts after three days in the red</h5><p>Every bill gets paid, even when the till is empty. The bank will lend you the difference, with interest.</p></section>
       <section class="ad"><p>Business computer for sale.<br><b>CORP/OS</b><br>runs your whole company.<br>Enquire within.</p></section>
     </div>
   </article>
@@ -123,10 +127,10 @@
 
 <section id="trailer" class="trailer">
   <p class="hour reveal">20:00</p>
-  <h2 class="say reveal">The shutters come down.<br>Here is the day again, in thirty seconds.</h2>
+  <h2 class="say reveal">The shutters are down. Here's the day again, in 37 seconds.</h2>
   <div class="monitor reveal">
     <div class="crt">
-      <video id="trailer-video" src="assets/video/trailer.mp4" poster="assets/video/poster.webp" muted loop playsinline preload="metadata" aria-label="Startup '84 trailer: café rooms in Jakarta, Yangon and New York, the iPad dashboard, reports and the world map. No sound."></video>
+      <video id="trailer-video" data-src="assets/video/trailer.mp4" data-poster="assets/video/poster.webp" muted loop playsinline preload="none" aria-label="Startup '84 trailer: café rooms in Jakarta, Yangon and New York, the iPad dashboard, reports and the world map. No sound."></video>
       <button class="play" id="trailer-play" type="button">▶ PLAY</button>
     </div>
     <div class="monitor-chin"><span>CORP/OS</span><i></i></div>
@@ -135,15 +139,15 @@
 
 <section id="night" class="night-end">
   <p class="hour reveal">22:00</p>
-  <h2 class="say reveal">The shops trade on while you sleep.<br>Tomorrow, open another.</h2>
-  <a class="ribbon reveal" href="https://testflight.apple.com/join/jcys6CCG"><span>Join the free beta</span></a>
-  <p class="small reveal">Install TestFlight, then open the link on your iPhone or iPad.</p>
+  <h2 class="say reveal">Your shops keep selling while you sleep. Come back in the morning and see what you made.</h2>
+  <a class="ribbon reveal" href="https://testflight.apple.com/join/jcys6CCG"><span>Play the free beta</span></a>
+  <p class="small reveal">Install TestFlight on your iPhone or iPad, then open this link there.</p>
 </section>
 
 </main>
 
 <footer class="foot">
-  <p><img src="assets/art/icon_mug.png" alt=""> Startup '84 · a game by Hendra Saputra</p>
+  <p><img src="assets/art/icon_mug_48.png" alt=""> Startup '84 · a game by Hendra Saputra</p>
   <nav><a href="privacy/">Privacy</a><a href="support/">Support</a><a href="mailto:tesbundling@gmail.com">tesbundling@gmail.com</a></nav>
   <p class="credit">Retro-computing inspired; an original fictional system. Pixel type: Sysfont by Alina Sava, <a href="assets/fonts/OFL.txt">SIL Open Font License</a>.</p>
 </footer>

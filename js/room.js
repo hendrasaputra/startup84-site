@@ -41,15 +41,15 @@ export class Room {
   async load() {
     const t = this.theme, base = 'assets/iso/';
     const need = {
-      back: `${base}iso_${t}_w16_pad.png`, fore: `${base}iso_${t}_w16_fg_pad.png`,
-      staff: `${base}iso_people_staff${this.kind === 'cafe' ? '' : '_' + this.kind}_pad.png`,
-      manager: `${base}iso_people_manager_pad.png`,
+      back: `${base}iso_${t}_w16_pad.webp`, fore: `${base}iso_${t}_w16_fg_pad.webp`,
+      staff: `${base}iso_people_staff${this.kind === 'cafe' ? '' : '_' + this.kind}_pad.webp`,
+      manager: `${base}iso_people_manager_pad.webp`,
     };
-    PEOPLE.forEach(p => { need[p] = `${base}iso_people_${p}_pad.png`; });
+    PEOPLE.forEach(p => { need[p] = `${base}iso_people_${p}_pad.webp`; });
     this.sprites = this.iso.layout.sprites.map(s => ({ ...s, name: this.pieceName(s.name) }));
     for (const s of this.sprites) {
-      need[s.name] = `${base}iso_${s.name}_pad.png`;
-      need[s.name + '_sh'] = `${base}iso_${s.name}_sh_pad.png`;
+      need[s.name] = `${base}iso_${s.name}_pad.webp`;
+      need[s.name + '_sh'] = `${base}iso_${s.name}_sh_pad.webp`;
     }
     const entries = await Promise.all(Object.entries(need).map(async ([k, v]) => [k, await loadImage(v)]));
     this.img = Object.fromEntries(entries);

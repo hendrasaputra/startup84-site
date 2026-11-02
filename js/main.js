@@ -1,5 +1,5 @@
-import { startSky } from './sky.js';
-import { Room, loadIso } from './room.js';
+import { startSky } from './sky.js?v=4';
+import { Room, loadIso } from './room.js?v=4';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -22,7 +22,7 @@ const io = new IntersectionObserver(es => es.forEach(e => {
 }), { threshold: 0.2 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-startSky(document.getElementById('sky'), { citySrc: 'assets/world/skyline_newyork.png', onHour })
+startSky(document.getElementById('sky'), { citySrc: 'assets/world/skyline_newyork.webp', onHour })
   .catch(e => { console.error(e); document.body.classList.add('no-sky'); });
 
 // 09:00 — the café, with labels pointing at its parts. Loaded on its own, so the rest of the page
@@ -94,6 +94,11 @@ let last = performance.now();
 // 20:00 — the trailer plays itself when the monitor is on screen, silent and looping; a click pauses it.
 {
   const v = document.getElementById('trailer-video'), btn = document.getElementById('trailer-play');
+  // Nothing of the trailer is fetched until the monitor is close to the screen.
+  new IntersectionObserver(([e], io) => {
+    if (!e.isIntersecting) return;
+    v.poster = v.dataset.poster; v.src = v.dataset.src; io.disconnect();
+  }, { rootMargin: '800px' }).observe(v);
   const play = () => v.play().then(() => { btn.hidden = true; }).catch(() => { btn.hidden = false; });
   btn.addEventListener('click', play);
   v.addEventListener('click', () => { if (v.paused) play(); else { v.pause(); btn.hidden = false; } });

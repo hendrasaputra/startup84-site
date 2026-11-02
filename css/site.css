@@ -46,6 +46,8 @@ section { position: relative; padding: 0 var(--gutter); }
   margin: 0 auto; max-width: 22em; text-align: center;
   /* A thin outline in the light's colour, so a line still reads where it crosses the buildings */
   -webkit-text-stroke: 5px var(--halo); paint-order: stroke fill; text-shadow: 0 0 24px var(--glow); }
+.premise { font: 500 clamp(18px, 1.5vw, 21px)/1.5 var(--sans); max-width: 32em; margin: 16px auto 0; text-align: center;
+  -webkit-text-stroke: 4px var(--halo); paint-order: stroke fill; }
 .hour { display: table; font: clamp(34px, 5vw, 60px)/1 var(--pixel); margin: 0 auto 22px; letter-spacing: .06em;
   color: #f0b34d; background: #1f1813; padding: 10px 18px 12px; border: 3px solid #3a2e22;
   box-shadow: 5px 5px 0 rgba(31, 24, 19, .45); text-shadow: 0 0 12px rgba(240, 179, 77, .55); }
