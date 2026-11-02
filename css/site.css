@@ -39,8 +39,9 @@ a { color: inherit; }
 section { position: relative; padding: 0 var(--gutter); }
 .say { font: italic 400 clamp(26px, 3.4vw, 44px)/1.25 var(--serif); margin: 0 auto; max-width: 22em; text-align: center;
   text-shadow: 0 1px 0 var(--glow), 0 0 22px var(--glow); }
-.hour { font: clamp(40px, 6vw, 72px)/1 var(--pixel); text-align: center; margin: 0 0 18px; letter-spacing: .04em;
-  color: var(--ink); text-shadow: 3px 3px 0 var(--glow); }
+.hour { display: table; font: clamp(34px, 5vw, 60px)/1 var(--pixel); margin: 0 auto 22px; letter-spacing: .06em;
+  color: #f0b34d; background: #1f1813; padding: 10px 18px 12px; border: 3px solid #3a2e22;
+  box-shadow: 5px 5px 0 rgba(31, 24, 19, .45); text-shadow: 0 0 12px rgba(240, 179, 77, .55); }
 .small { display: table; font: 15px/1.4 var(--pixel); text-align: center; color: #efe4cb; background: rgba(31, 24, 19, .82);
   padding: 5px 12px; margin: 18px auto 0; letter-spacing: .03em; }
 
