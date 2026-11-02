@@ -3,161 +3,117 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Startup '84 — run a coffee chain on a 1984 business computer</title>
-<meta name="description" content="An idle business game for iPhone and iPad. Start with one café and grow a chain across six cities, on a fictional 1980s business computer. Free beta on TestFlight.">
+<title>Startup '84 — open a coffee shop in 1984</title>
+<meta name="description" content="An idle business game for iPhone and iPad. Open one café, then grow a chain across six cities, on a fictional 1980s business computer. Free beta on TestFlight.">
 <meta property="og:title" content="Startup '84">
-<meta property="og:description" content="Start with one café. Grow a chain across six cities. An idle business game for iPhone and iPad.">
+<meta property="og:description" content="Open a coffee shop in 1984. Grow it into a chain across six cities.">
 <meta property="og:image" content="https://startup84.hensap.id/assets/og.jpg">
 <meta property="og:url" content="https://startup84.hensap.id/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#16110c">
+<meta name="theme-color" content="#2b2340">
 <link rel="icon" href="assets/art/icon_mug.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 <script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }</script>
 <script type="module" src="js/main.js"></script>
 </head>
 <body>
 
-<header class="bar">
-  <a class="brand" href="#top"><img src="assets/art/icon_mug.png" alt=""> CORP/OS <span>Startup '84</span></a>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="menubar">
+  <a href="#open" class="menu-brand"><img src="assets/art/icon_mug.png" alt=""> CORP/OS</a>
   <nav>
-    <a href="#cities">Cities</a>
-    <a href="#kinds">Shops</a>
-    <a href="#day">A day</a>
-    <a class="pill" href="https://testflight.apple.com/join/jcys6CCG">Join the beta</a>
+    <a href="#morning">Shop</a><a href="#noon">Cities</a><a href="#evening">News</a>
   </nav>
+  <span class="menu-right"><a href="https://testflight.apple.com/join/jcys6CCG">Join the beta</a><span id="clock" aria-label="Time of day">06:00</span></span>
 </header>
 
-<main id="top">
+<main>
 
-<section class="hero">
-  <div class="hero-copy">
-    <p class="kicker reveal">An idle business game for iPhone and iPad</p>
-    <h1 class="reveal">One café.<br>Six cities.<br><em>Your chain.</em></h1>
-    <p class="lede reveal">Run a coffee company on a fictional 1984 business computer. Hire baristas, set your prices, open shops on new streets, and watch every sale happen in the room.</p>
-    <div class="ctas reveal">
-      <a class="btn primary" href="https://testflight.apple.com/join/jcys6CCG">Join the free beta on TestFlight</a>
-      <a class="btn" href="#cities">See the cities</a>
+<section id="open" class="open">
+  <h1><img class="logo" src="assets/world/logo.png" alt="Startup '84" width="736" height="192"></h1>
+  <p class="say">Open a coffee shop in 1984.<br>Grow it into a chain across six cities.</p>
+  <a class="ribbon" href="https://testflight.apple.com/join/jcys6CCG"><span>Join the free beta</span></a>
+  <p class="small">iPhone and iPad · on TestFlight now · App Store soon</p>
+  <p class="cue" aria-hidden="true">Scroll to start the day</p>
+</section>
+
+<section id="morning" class="morning">
+  <p class="hour reveal">09:00</p>
+  <h2 class="say reveal">The doors open.<br>By nine the line is out on the street.</h2>
+  <figure id="cafe" class="cafe reveal" aria-label="A café in New York drawn in isometric pixel art. Customers queue at the counter, baristas work the machines, and the price rises from the till with each sale.">
+    <span class="tag" data-at="queue">The line<i>Too long, and people leave</i></span>
+    <span class="tag" data-at="till">The till<i>Every sale, as it happens</i></span>
+    <span class="tag" data-at="staff">Baristas<i>One more station each</i></span>
+    <span class="tag" data-at="machines">Machines<i>Cups a minute</i></span>
+    <span class="tag" data-at="tables">Seats<i>Somewhere to stay</i></span>
+  </figure>
+  <div class="dialog reveal">
+    <p class="dialog-title"><img src="assets/art/icon_manager.png" alt=""> ADVISOR</p>
+    <p>Every number in the game is something you can see in the shop. Buy what the shop is short of, set the price, keep the beans stocked, and hire a manager to run it while you are away.</p>
+  </div>
+</section>
+
+<section id="noon" class="noon">
+  <p class="hour reveal">13:00</p>
+  <h2 class="say reveal">One shop becomes three.<br>Three earn you a city.</h2>
+  <div class="postcards">
+    <figure class="card reveal" style="--r:-4deg"><img src="assets/world/postcard_home.jpg" alt="Your home town" loading="lazy"><figcaption>Your home town<b>Where it starts</b></figcaption></figure>
+    <figure class="card reveal" style="--r:3deg"><img src="assets/world/postcard_jakarta.jpg" alt="Jakarta" loading="lazy"><figcaption>Jakarta<b>The biggest crowds</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-2deg"><img src="assets/world/postcard_bandung.jpg" alt="Bandung" loading="lazy"><figcaption>Bandung<b>Known for its bakeries</b></figcaption></figure>
+    <figure class="card reveal" style="--r:5deg"><img src="assets/world/postcard_yangon.jpg" alt="Yangon" loading="lazy"><figcaption>Yangon<b>Teashops and snacks</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-5deg"><img src="assets/world/postcard_newyork.jpg" alt="New York" loading="lazy"><figcaption>New York<b>Cheesecake, and rent to match</b></figcaption></figure>
+    <figure class="card reveal" style="--r:2deg"><img src="assets/world/postcard_boston.jpg" alt="Boston" loading="lazy"><figcaption>Boston<b>Commuters and students</b></figcaption></figure>
+    <figure class="card reveal" style="--r:-3deg"><img src="assets/world/postcard_annarbor.jpg" alt="Ann Arbor" loading="lazy"><figcaption>Ann Arbor<b>A college town</b></figcaption></figure>
+  </div>
+</section>
+
+<section id="evening" class="evening">
+  <p class="hour reveal">18:00</p>
+  <h2 class="say reveal">Six o'clock. The day closes.</h2>
+  <article class="paper reveal">
+    <header class="masthead">
+      <p class="edition"><span>Day 93</span><span>Late edition</span><span>25¢</span></p>
+      <h3>The Daily Close</h3>
+      <p class="edition rule"><span>Sales $19,103,048</span><span>Wages $954,354</span><span>Rent $26,245</span><span>Cups 2,869,876</span></p>
+    </header>
+    <div class="lead">
+      <h4>Cake shop opens in Greenwich Village</h4>
+      <div class="lead-grid">
+        <figure class="photo"><img src="assets/world/news_photo.jpg" alt="A cookie kiosk in Yangon on its first morning" loading="lazy"><figcaption>A cookie kiosk in Yangon on its first morning.</figcaption></figure>
+        <div>
+          <p class="dek">Few customers, high prices, and nothing much sold until the pastry chef arrived.</p>
+          <p class="story">A cake shop lives on its reputation: loved, it sells several times what a middling one does. It is one of four kinds of shop a company can license, with the café, the bakery and the cookie kiosk. Each new kind needs an expansion, earned by opening three shops in a city.</p>
+        </div>
+      </div>
     </div>
-    <p class="fine reveal">Coming to the App Store. Free to play.</p>
-  </div>
-  <div id="hero-stage" class="stage" aria-label="A busy café in New York, drawn in isometric pixel art. Customers queue at the counter and a price rises from the till with each sale." role="img">
-    <div class="stage-fallback"><img src="assets/shots/iphone-1-cake-shop.jpg" alt=""></div>
-  </div>
-</section>
-
-<section class="strip" aria-hidden="true">
-  <div class="marquee">
-    <span>DAY 93 CLOSED · SALES $19,103,048</span><span>A RIVAL OPENS ON WALL STREET IN 1 DAY</span><span>THE MACHINE IS DOWN AT BLOK M</span><span>EXPANSION READY</span><span>NEW: CAKE SHOPS AND COOKIE KIOSKS</span><span>CAN'T KEEP UP · OPEN ANOTHER SHOP</span>
-    <span>DAY 93 CLOSED · SALES $19,103,048</span><span>A RIVAL OPENS ON WALL STREET IN 1 DAY</span><span>THE MACHINE IS DOWN AT BLOK M</span><span>EXPANSION READY</span><span>NEW: CAKE SHOPS AND COOKIE KIOSKS</span><span>CAN'T KEEP UP · OPEN ANOTHER SHOP</span>
-  </div>
-</section>
-
-<section class="pitch">
-  <div class="window reveal">
-    <div class="titlebar"><img src="assets/art/icon_mug.png" alt=""> COFFEE COMPANY — COMPANY.APP <i></i></div>
-    <div class="window-body">
-      <p class="label">CASH TO SPEND</p>
-      <p id="cash" class="cash">$813,883,590.56</p>
-      <div class="stats"><div><span>CHAIN</span>$110,272/min</div><div><span>SHOPS</span>20</div><div><span>CITIES</span>4 of 7</div></div>
+    <div class="columns">
+      <section><h5>Bakery throws away 40 loaves</h5><p>Bread does not keep. A bakery bakes in the morning and throws away what is left at the close, so the owner has to choose how much to bake.</p></section>
+      <section><h5>Machine down at Blok M</h5><p>The espresso machine is running at half speed. Pay for a repair today, or wait three days for the part. One decision like this lands every day.</p></section>
+      <section><h5>Kiosks take the campus</h5><p>A cookie kiosk takes a pitch beside the shops, not a shop's place. Low rent, cheap cookies, and a low ceiling.</p></section>
+      <section><h5>Rival opens on Wall Street</h5><p>Streets nobody trades on are taken by rivals. Open first, or lose the place.</p></section>
+      <section><h5>Shop closes after three days in the red</h5><p>Bills are paid in full. Cash can run out, and the bank will lend, at a price.</p></section>
+      <section class="ad"><p>Business computer for sale.<br><b>CORP/OS</b><br>runs your whole company.<br>Enquire within.</p></section>
     </div>
-  </div>
-  <div class="pitch-copy">
-    <h2 class="reveal">A business you can see.</h2>
-    <p class="reveal">Every number in Startup '84 is something happening in a shop. A long queue means you need another barista. An empty counter means you ran out. A price floating up from the till is a sale.</p>
-    <p class="reveal">Your shops keep trading while you are away. Come back a few times a day, read the newspaper, make the day's decision, and choose where the next shop goes.</p>
-  </div>
+  </article>
 </section>
 
-<section id="cities" class="cities">
-  <div class="cities-sticky">
-    <div class="section-head">
-      <p class="kicker">Six cities and your home town</p>
-      <h2>Every city has its own streets.</h2>
-      <p>Three shops in a city earn you an expansion. Spend it on a new city, each with its own buildings, cafés and customers.</p>
-      <div class="progress"><i id="city-progress"></i></div>
-    </div>
-    <div class="track-wrap"><div id="city-track" class="track"></div></div>
-  </div>
-</section>
-
-<section id="kinds" class="kinds">
-  <div class="section-head reveal">
-    <p class="kicker">Four kinds of shop</p>
-    <h2>Each one plays differently.</h2>
-  </div>
-  <div class="kind-grid">
-    <article class="kind reveal">
-      <img src="assets/art/facade_cafe.png" alt="A café front">
-      <h3>Café</h3>
-      <p>Where it starts. Machines, baristas, beans and a queue to keep moving.</p>
-    </article>
-    <article class="kind reveal">
-      <img src="assets/art/facade_bakery.png" alt="A bakery front">
-      <h3>Bakery</h3>
-      <p>Bake in the morning, sell by the close. What is left is thrown away, so choose how much to bake.</p>
-    </article>
-    <article class="kind reveal">
-      <img src="assets/art/facade_cake.png" alt="A cake shop front">
-      <h3>Cake shop</h3>
-      <p>Few customers, high prices. Trade follows your reputation, and it sells little until you hire a pastry chef.</p>
-    </article>
-    <article class="kind reveal">
-      <img src="assets/art/facade_kiosk.png" alt="A cookie kiosk">
-      <h3>Cookie kiosk</h3>
-      <p>Cheap to run and fits on a pitch beside the shops. Small, fast and everywhere.</p>
-    </article>
-  </div>
-</section>
-
-<section id="day" class="day">
-  <div class="section-head reveal">
-    <p class="kicker">How a day plays</p>
-    <h2>A few minutes, a few times a day.</h2>
-  </div>
-  <ol class="steps">
-    <li class="reveal"><img src="assets/art/icon_register.png" alt=""><h3>Run the shop</h3><p>Buy what the shop is short of. The advisor says what is holding it back and why.</p></li>
-    <li class="reveal"><img src="assets/art/icon_manager.png" alt=""><h3>Hire managers</h3><p>Train them to run shops for you, so the chain grows without more tapping.</p></li>
-    <li class="reveal"><img src="assets/art/icon_reports.png" alt=""><h3>Read the close</h3><p>Every day ends with a newspaper: sales, wages, rent and stock, and one decision to make.</p></li>
-    <li class="reveal"><img src="assets/art/icon_profit.png" alt=""><h3>Come back richer</h3><p>Shops trade while you are away. Cash can also run out, and shops in the red close.</p></li>
-  </ol>
-</section>
-
-<section class="shots">
-  <div class="section-head reveal">
-    <p class="kicker">On iPhone and iPad</p>
-    <h2>The whole company in your pocket.</h2>
-  </div>
-  <div class="phones">
-    <figure class="phone reveal"><img src="assets/shots/iphone-1-cake-shop.jpg" alt="A cake shop in New York" loading="lazy"></figure>
-    <figure class="phone reveal"><img src="assets/shots/iphone-2-kiosk.jpg" alt="A cookie kiosk in Yangon" loading="lazy"></figure>
-    <figure class="phone reveal"><img src="assets/shots/iphone-4-world.jpg" alt="The world map of cities" loading="lazy"></figure>
-    <figure class="phone reveal"><img src="assets/shots/iphone-5-reports.jpg" alt="Reports of profit per day" loading="lazy"></figure>
-  </div>
-</section>
-
-<section class="final">
-  <h2 class="reveal">Open your first café.</h2>
-  <p class="reveal">Startup '84 is in public beta. Install TestFlight, then open the link on your iPhone or iPad.</p>
-  <a class="btn primary big reveal" href="https://testflight.apple.com/join/jcys6CCG">Join the free beta on TestFlight</a>
+<section id="night" class="night-end">
+  <p class="hour reveal">22:00</p>
+  <h2 class="say reveal">The shops trade on while you sleep.<br>Tomorrow, open another.</h2>
+  <a class="ribbon reveal" href="https://testflight.apple.com/join/jcys6CCG"><span>Join the free beta</span></a>
+  <p class="small reveal">Install TestFlight, then open the link on your iPhone or iPad.</p>
 </section>
 
 </main>
 
 <footer class="foot">
-  <div>
-    <p class="brand"><img src="assets/art/icon_mug.png" alt=""> Startup '84</p>
-    <p>A game by Hendra Saputra. Retro-computing inspired; an original fictional system.</p>
-  </div>
-  <nav>
-    <a href="privacy/">Privacy policy</a>
-    <a href="support/">Support</a>
-    <a href="mailto:tesbundling@gmail.com">tesbundling@gmail.com</a>
-  </nav>
-  <p class="credit">Display type: Sysfont by Alina Sava, <a href="assets/fonts/OFL.txt">SIL Open Font License</a>. 3D by three.js.</p>
+  <p><img src="assets/art/icon_mug.png" alt=""> Startup '84 · a game by Hendra Saputra</p>
+  <nav><a href="privacy/">Privacy</a><a href="support/">Support</a><a href="mailto:tesbundling@gmail.com">tesbundling@gmail.com</a></nav>
+  <p class="credit">Retro-computing inspired; an original fictional system. Pixel type: Sysfont by Alina Sava, <a href="assets/fonts/OFL.txt">SIL Open Font License</a>.</p>
 </footer>
 
 </body>
