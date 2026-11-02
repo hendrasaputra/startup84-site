@@ -76,3 +76,23 @@ let last = performance.now();
   last = now;
   room.update(Math.min(dt, 0.1)); room.draw(now); drawBlock();
 })(last);
+
+// 15:00 — the iPad cycles through its screens while it is in view.
+{
+  const shots = [...document.querySelectorAll('#ipad-screen img')], names = [...document.querySelectorAll('#screen-names li')];
+  let k = 0, seen = false;
+  new IntersectionObserver(([e]) => { seen = e.isIntersecting; }).observe(document.getElementById('ipad-screen'));
+  const show = i => { shots.forEach((s, j) => s.classList.toggle('on', j === i)); names.forEach((n, j) => n.classList.toggle('on', j === i)); };
+  names.forEach((n, i) => n.addEventListener('click', () => { k = i; show(k); }));
+  if (!reduce) setInterval(() => { if (seen) { k = (k + 1) % shots.length; show(k); } }, 3800);
+}
+
+// 20:00 — the trailer plays itself when the monitor is on screen, silent and looping; a click pauses it.
+{
+  const v = document.getElementById('trailer-video'), btn = document.getElementById('trailer-play');
+  const play = () => v.play().then(() => { btn.hidden = true; }).catch(() => { btn.hidden = false; });
+  btn.addEventListener('click', play);
+  v.addEventListener('click', () => { if (v.paused) play(); else { v.pause(); btn.hidden = false; } });
+  if (reduce) btn.hidden = false;
+  else new IntersectionObserver(([e]) => { if (e.isIntersecting) play(); else v.pause(); }, { threshold: 0.4 }).observe(v);
+}

@@ -26,7 +26,7 @@
 <header class="menubar">
   <a href="#open" class="menu-brand"><img src="assets/art/icon_mug.png" alt=""> CORP/OS</a>
   <nav>
-    <a href="#morning">Shop</a><a href="#noon">Cities</a><a href="#evening">News</a>
+    <a href="#morning">Shop</a><a href="#noon">Cities</a><a href="#afternoon">Screens</a><a href="#evening">News</a><a href="#trailer">Trailer</a>
   </nav>
   <span class="menu-right"><a href="https://testflight.apple.com/join/jcys6CCG">Join the beta</a><span id="clock" aria-label="Time of day">06:00</span></span>
 </header>
@@ -71,6 +71,26 @@
   </div>
 </section>
 
+<section id="afternoon" class="afternoon">
+  <p class="hour reveal">15:00</p>
+  <h2 class="say reveal">On iPad, the whole chain on one screen.<br>On iPhone, in your pocket.</h2>
+  <div class="devices reveal">
+    <figure class="ipad" aria-label="The game on iPad">
+      <div class="ipad-screen" id="ipad-screen">
+        <img class="on" src="assets/shots/ipad-1-cake-shop.jpg" alt="The iPad dashboard: a cake shop in New York with the shop tabs, the advisor, alerts and the day's figures" loading="lazy">
+        <img src="assets/shots/ipad-2-kiosk.jpg" alt="The iPad dashboard showing a cookie kiosk in Yangon" loading="lazy">
+        <img src="assets/shots/ipad-3-reports.jpg" alt="Reports on iPad: profit per day and each shop's profit at the close" loading="lazy">
+      </div>
+    </figure>
+    <figure class="iphone" aria-label="The game on iPhone">
+      <img src="assets/shots/iphone-4-world.jpg" alt="The world map of cities on iPhone" loading="lazy">
+    </figure>
+  </div>
+  <ul class="screen-names reveal" id="screen-names">
+    <li class="on">The shop</li><li>Kiosks and cafés</li><li>Reports</li>
+  </ul>
+</section>
+
 <section id="evening" class="evening">
   <p class="hour reveal">18:00</p>
   <h2 class="say reveal">Six o'clock. The day closes.</h2>
@@ -99,6 +119,18 @@
       <section class="ad"><p>Business computer for sale.<br><b>CORP/OS</b><br>runs your whole company.<br>Enquire within.</p></section>
     </div>
   </article>
+</section>
+
+<section id="trailer" class="trailer">
+  <p class="hour reveal">20:00</p>
+  <h2 class="say reveal">The shutters come down.<br>Here is the day again, in thirty seconds.</h2>
+  <div class="monitor reveal">
+    <div class="crt">
+      <video id="trailer-video" src="assets/video/trailer.mp4" poster="assets/video/poster.jpg" muted loop playsinline preload="metadata" aria-label="Startup '84 trailer: café rooms in Jakarta, Yangon and New York, the iPad dashboard, reports and the world map. No sound."></video>
+      <button class="play" id="trailer-play" type="button">▶ PLAY</button>
+    </div>
+    <div class="monitor-chin"><span>CORP/OS</span><i></i></div>
+  </div>
 </section>
 
 <section id="night" class="night-end">
